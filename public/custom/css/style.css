@@ -1,0 +1,82 @@
+a{
+    color: #fff;
+}
+.buttonCustom{
+    padding: 11px 13px ;
+}
+
+/* DASHBOARD */
+
+.tabs{
+    /* background: #ffe5e2;
+    border-radius: .5rem; */
+    grid-template-rows: auto 1fr;
+}
+.buttonDashboard{
+    padding: 1rem 0;
+    border: none;
+    font-size:small;
+    background: #fff;
+    cursor: pointer;
+    transition: all .3s linear;
+    /* letter-spacing: 0.25rem; */
+}
+
+.btn-container.dashboard{ 
+    display: grid;
+    grid-template-columns: .1fr .1fr; /* blm tau fungsinya*/
+    justify-content: end;
+}
+
+.buttonDashboard:nth-child(1){
+    border-top-left-radius: .5rem;
+}
+
+.buttonDashboard:nth-child(3){
+    border-top-right-radius: 0.5rem;
+}
+
+.buttonDashboard:hover:not(.live){
+    background: #d9d9d9;
+    opacity: .5;
+    /* color: white; */
+}
+
+.tabs-content{
+    padding: 0 1.5rem;
+}
+
+.content{
+    display: none;
+}
+
+.content.live{
+    display: block;
+}
+
+.buttonDashboard.live{
+    background: aqua;
+}
+
+/* SURAT MASUK */
+
+.buttonCustom.daftar-surat-masuk{
+    padding: 7px 5px ;
+}
+
+.buttonCustom.surat{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-container.form{
+    font-size: small;
+    display: grid;
+    grid-template-columns: .1fr .1fr;
+    justify-content: end;
+    padding: 5px 3px;
+    margin: 0 10px 20px 10px;
+}
