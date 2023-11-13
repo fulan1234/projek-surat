@@ -4,6 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Role;
+use App\Models\User;
+use App\Models\SuratKeluar;
+use App\Models\SuratMasuk;
+use App\Models\JenisSurat;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,7 +28,28 @@ class DatabaseSeeder extends Seeder
 
         //Role
         Role::create([
-                'name' => 'admin'
+            'name' => 'admin'
         ]);
+
+        //user
+        User::create([
+            'role_id' => 1,
+            'name' => 'Admin',
+            'avatar' => '1686278465.jpg',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin'),
+        ]);
+
+        //Jenis_surat
+        JenisSurat::create([
+            'name' => 'surat dinas'
+        ]);
+
+        //Surat masuk
+        SuratKeluar::factory(10)->create();
+
+        //surat keluar
+        SuratMasuk::factory(10)->create();
+
     }
 }
