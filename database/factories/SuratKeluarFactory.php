@@ -23,7 +23,7 @@ class SuratKeluarFactory extends Factory
             'perihal' => $this->faker->sentence(mt_rand(1, 2)),
             'jenis_id' => 1,
             'ditujukan' => $this->faker->sentence(mt_rand(1, 2)),
-            'deskripsi' => $this->faker->paragraph(2),
+            'deskripsi' => $this->faker->sentence(2),
             'pengirim' => $this->faker->name(),
             'berkas' => '12345674.pdf',
             'status' => 'Belum Disposisi',

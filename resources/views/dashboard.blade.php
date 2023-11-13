@@ -18,7 +18,7 @@ Surat Masuk - Sipsu
             <div class=" col-md -6 col-xl report-inner-card">
               <div class="inner-card-text">
                 <span class="report-title">Surat Masuk</span>
-                <h4> 30 Surat</h4>
+                <h4> {{$suratmcount}} Surat</h4>
                 <span class="report-count"> 2 Baru</span>
               </div>
               <div class="inner-card-icon bg-success">
@@ -28,7 +28,7 @@ Surat Masuk - Sipsu
             <div class="col-md-6 col-xl report-inner-card">
               <div class="inner-card-text">
                 <span class="report-title">Surat Keluar</span>
-                <h4> 15 Surat</h4>
+                <h4> {{$suratkcount}} Surat</h4>
                 <span class="report-count"> 3 Baru</span>
               </div>
               <div class="inner-card-icon bg-danger">
@@ -59,7 +59,7 @@ Surat Masuk - Sipsu
                 <button class="buttonDashboard live" data-id="surat-masuk">Surat Masuk</button>
                 <button class="buttonDashboard" data-id="surat-keluar">Surat Keluar</button>
             </div>
-    
+
             <div class="tabs-content">
             <h4 class="card-title"><i class="icon-screen-desktop"></i>  Data Surat Terbaru</h4>
             </p>
@@ -72,37 +72,24 @@ Surat Masuk - Sipsu
                   <th style="width: 20%;">Pengirim</th>
                   <th style="width: 20%;">Kepada</th>
                   <th style="width: 20%;">Jenis Surat</th>
-                  <th style="width: 20%;">Sifat</th>
-                  <th style="width: 20%;">Petugas</th>
                   <th style="width: 20%;">Waktu</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>212</td>
-                  <td>2018-02-14</td>
-                  <td>Ujikom</td>
-                  <td>Sekolah</td>
-                  <td>Siswa</td>
-                  <td>Surat Keterangan</td>
-                  <td><label class="badge badge-danger">Rahasia</label></td>
-                  <td>Si Fulan</td>
-                  <td>3 Hari yang lalu</td>
-                </tr>
-                <tr>
-                  <td>1111</td>
-                  <td>2019-03-16</td>
-                  <td>Test</td>
-                  <td>Mudryk</td>
-                  <td>Nyunyez</td>
-                  <td>Perjalanan Dinas</td>
-                  <td><label class="badge badge-warning">Penting</label></td>
-                  <td>Si Fulano</td>
-                  <td>4 Hari yang lalu</td>
-                </tr>
+                @foreach ($suratm as $index => $s)
+                    <tr>
+                        <td>{{$s->no}}</td>
+                        <td>{{$s->tgl_surat}}</td>
+                        <td>{{$s->perihal}}</td>
+                        <td>{{$s->pengirim}}</td>
+                        <td>{{$s->ditujukan}}</td>
+                        <td>{{$s->jenis_surat->name}}</td>
+                        <td>{{$dateDifferencesm[$index]['difference']}}</td>
+                    </tr>
+                @endforeach
               </tbody>
             </table>
-    
+
             <table class="table table-hover content" id="surat-keluar" style="width:100%;">
                 <thead>
                   <tr>
@@ -112,34 +99,21 @@ Surat Masuk - Sipsu
                     <th style="width: 20%;">Pengirim</th>
                     <th style="width: 20%;">Kepada</th>
                     <th style="width: 20%;">Jenis Surat</th>
-                    <th style="width: 20%;">Sifat</th>
-                    <th style="width: 20%;">Petugas</th>
                     <th style="width: 20%;">Waktu</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>311</td>
-                    <td>2023-05-14</td>
-                    <td>UN</td>
-                    <td>SDN 01 Pagi</td>
-                    <td>Siswa</td>
-                    <td>Surat Peringatan</td>
-                    <td><label class="badge badge-danger">Rahasia</label></td>
-                    <td>Si Anu</td>
-                    <td>1 Hari yang lalu</td>
-                  </tr>
-                  <tr>
-                    <td>2312</td>
-                    <td>2021-08-15</td>
-                    <td>Testing Web</td>
-                    <td>Plesbol</td>
-                    <td>ETI</td>
-                    <td>Negosiasi Akun</td>
-                    <td><label class="badge badge-warning">Penting</label></td>
-                    <td>Si Manusia</td>
-                    <td>3 Jam yang lalu</td>
-                  </tr>
+                    @foreach ($suratk as $index => $s)
+                    <tr>
+                        <td>{{$s->no}}</td>
+                        <td>{{$s->tgl_surat}}</td>
+                        <td>{{$s->perihal}}</td>
+                        <td>{{$s->pengirim}}</td>
+                        <td>{{$s->ditujukan}}</td>
+                        <td>{{$s->jenis_surat->name}}</td>
+                        <td>{{$dateDifferencesm[$index]['difference']}}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
             </div>

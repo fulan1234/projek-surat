@@ -23,6 +23,6 @@ class SuratKeluar extends Model
 
     public function jenis_surat()
     {
-        return $this->belongsTo(JenisSurat::class);
+        return $this->belongsTo(JenisSurat::class, 'jenis_id');
     }
 }

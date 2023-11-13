@@ -45,6 +45,7 @@ Surat Masuk - Sipsu
                         <td>{{$s->pengirim}}</td>
                         <td>
                             <a style="color: black;" href="{{ route('downloadsuratmasuk', $s->berkas) }}">{{$s->berkas}}</a>
+                            {{-- <a style="color: black;" href="{{ route('downloadsuratmasuk', $s->berkas) }}">{{$s->berkas}}</a> --}}
                         </td>
                         <td>{{$s->status}}</td>
                         {{-- <td>

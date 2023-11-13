@@ -19,24 +19,31 @@ Route::get('/', function () {
 
 Route::get('/dashboard', 'App\Http\Controllers\home@index')->name('dashboard');
 
-Route::get('/suratMasuk', 'App\Http\Controllers\home@suratMasuk')->name('suratMasuk');
-Route::get('/suratMasuk/tambahSurat', 'App\Http\Controllers\home@tambahSurat')->name('tambahSurat');
-Route::post('/suratMasuk', 'App\Http\Controllers\home@storeSurat')->name('storeSurat');
-Route::delete('/suratmasuk/{id}', 'App\Http\Controllers\home@deletesurat')->name('hapussurat');
-Route::get('/suratmasuk/edit/{id}', 'App\Http\Controllers\home@editsurat')->name('editsurat');
-Route::put('/suratmasuk/{id}', 'App\Http\Controllers\home@updatesurat')->name('updatesurat');
-Route::get('/suratmasuk/disposisi/{id}', 'App\Http\Controllers\home@disposisi')->name('disposisi');
-Route::get('/file/{filename}', function ($filename) {
-    $file = storage_path('app/public/suratmasuk/' . $filename);
+//SURAT KELUAR
+Route::get('/suratKeluar', 'App\Http\Controllers\SuratkController@suratKeluar')->name('suratKeluar');
+Route::get('/suratKeluar/tambahSurat', 'App\Http\Controllers\SuratkController@tambahSurat')->name('tambahSuratk');
+Route::post('/suratKeluar', 'App\Http\Controllers\SuratkController@storeSurat')->name('storeSuratk');
+Route::delete('/suratKeluar/{id}', 'App\Http\Controllers\SuratkController@deletesurat')->name('hapussuratk');
+Route::get('/suratKeluar/edit/{id}', 'App\Http\Controllers\SuratkController@editsurat')->name('editsuratk');
+Route::put('/suratKeluar/{id}', 'App\Http\Controllers\SuratkController@updatesurat')->name('updatesuratk');
+Route::get('/suratKeluar/disposisi/{id}', 'App\Http\Controllers\SuratkController@disposisi')->name('disposisik');
+Route::get('/suratKeluar/download/{filename}', 'App\Http\Controllers\SuratkController@download')->name('downloadsuratkeluar');
 
-    if (file_exists($file)) {
-        return response()->download($file);
-    } else {
-        return response()->json(['message' => 'File not found'], 404);
-    }
-})->name('downloadsuratmasuk');
+//SURAT MASUK
+Route::get('/suratMasuk', 'App\Http\Controllers\SuratmController@suratMasuk')->name('suratMasuk');
+Route::get('/suratMasuk/tambahSurat', 'App\Http\Controllers\SuratmController@tambahSurat')->name('tambahSurat');
+Route::post('/suratMasuk', 'App\Http\Controllers\SuratmController@storeSurat')->name('storeSurat');
+Route::delete('/suratmasuk/{id}', 'App\Http\Controllers\SuratmController@deletesurat')->name('hapussurat');
+Route::get('/suratmasuk/edit/{id}', 'App\Http\Controllers\SuratmController@editsurat')->name('editsurat');
+Route::put('/suratmasuk/{id}', 'App\Http\Controllers\SuratmController@updatesurat')->name('updatesurat');
+Route::get('/suratmasuk/disposisi/{id}', 'App\Http\Controllers\SuratmController@disposisi')->name('disposisi');
+Route::get('/suratmasuk/download/{filename}', 'App\Http\Controllers\SuratmController@download')->name('downloadsuratmasuk');
 
-Route::get('/suratKeluar', 'App\Http\Controllers\home@suratKeluar')->name('suratKeluar');
+//JENIS SURAT
 Route::get('/jenisSurat', 'App\Http\Controllers\home@jenisSurat')->name('jenisSurat');
+
+//DISPOSISI SURAT
 Route::get('/disposisiSurat', 'App\Http\Controllers\home@disposisiSurat')->name('disposisiSurat');
+
+//DASHBOARD
 Route::get('/dashboard', 'App\Http\Controllers\home@dashboard')->name('dashboard');
