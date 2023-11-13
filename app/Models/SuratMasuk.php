@@ -11,6 +11,7 @@ class SuratMasuk extends Model
 
     protected $table = "surat_masuks";
     protected $fillable = [
+        'no',
         'tgl_surat',
         'perihal',
         'jenis_id',
@@ -23,6 +24,6 @@ class SuratMasuk extends Model
 
     public function jenis_surat()
     {
-        return $this->belongsTo(JenisSurat::class);
+        return $this->belongsTo(JenisSurat::class, 'jenis_id');
     }
 }

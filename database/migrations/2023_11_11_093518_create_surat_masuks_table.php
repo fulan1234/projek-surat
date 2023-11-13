@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('surat_masuks', function (Blueprint $table) {
             $table->id();
+            $table->integer('no');
             $table->date('tgl_surat');
             $table->string('perihal');
             $table->bigInteger('jenis_id');

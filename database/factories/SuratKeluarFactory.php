@@ -16,16 +16,9 @@ class SuratKeluarFactory extends Factory
      */
     public function definition()
     {
-        $status = $this->faker->numberBetween(1, 3);
-        if ($status == 1) {
-            $status == 'waiting';
-        }elseif ($status == 2){
-            $status == 'accepted';
-        }else{
-            $status == 'rejected';
-        }
 
         return [
+            'no' => $this->faker->numberBetween(100, 999),
             'tgl_surat' => $this->faker->date(),
             'perihal' => $this->faker->sentence(mt_rand(1, 2)),
             'jenis_id' => 1,
@@ -33,7 +26,7 @@ class SuratKeluarFactory extends Factory
             'deskripsi' => $this->faker->paragraph(2),
             'pengirim' => $this->faker->name(),
             'berkas' => '12345674.pdf',
-            'status' => $status,
+            'status' => 'Belum Disposisi',
         ];
     }
 }

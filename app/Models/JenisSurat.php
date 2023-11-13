@@ -21,6 +21,7 @@ class JenisSurat extends Model
 
     public function surat_keluar()
     {
-        return $this->hasMany(SuratKeluar::class);
+        return $this->hasMany(SuratKeluar::class, 'jenis_id');
     }
+
 }
