@@ -22,10 +22,8 @@ Surat Keluar - Sipsu
                   <th>No</th>
                   <th>No. Surat</th>
                   <th>Tanggal Surat</th>
-                  <th>Perihal</th>
                   <th>Jenis Surat</th>
                   <th>Ditujukan</th>
-                  <th>Deskripsi</th>
                   <th>Pengirim</th>
                   <th>Berkas</th>
                   <th>Status</th>
@@ -38,10 +36,8 @@ Surat Keluar - Sipsu
                         <td>{{$loop->iteration}}</td>
                         <td>{{$s->no}}</td>
                         <td>{{$s->tgl_surat}}</td>
-                        <td>{{$s->perihal}}</td>
                         <td>{{$s->jenis_surat->name}}</td>
                         <td>{{$s->ditujukan}}</td>
-                        <td>{{$s->deskripsi}}</td>
                         <td>{{$s->pengirim}}</td>
                         <td>
                             <a style="color: black;" href="{{ route('downloadsuratkeluar', $s->berkas) }}">{{$s->berkas}}</a>
@@ -57,10 +53,10 @@ Surat Keluar - Sipsu
                             <form action="{{route('hapussuratk', $s->id)}}" method="POST" onsubmit="return confirm('Anda yakin menghapus ini?');">
                                 @csrf
                                 <div>
-                                    <a href="{{route('disposisik', $s->id)}}" class="btn buttonCustom daftar-surat-masuk btn-primary mb-2" style="display: block;"><i class="icon-plus"></i>Disposisi</a>
-                                    <a href="{{route('editsuratk', $s->id)}}" class="btn buttonCustom daftar-surat-masuk btn-warning mr-2" style="display: block;"><i class="icon-trash"></i>Edit</a>
+                                    <a href="{{route('disposisik', $s->id)}}" class="btn buttonCustom daftar-surat-masuk btn-primary mr-2"><i class="icon-plus"></i></a>
+                                    <a href="{{route('editsuratk', $s->id)}}" class="btn buttonCustom daftar-surat-masuk btn-warning mr-2"><i class=" icon-magic-wand"></i></a>
                                     @method('DELETE')
-                                    <button type="submit" class="btn buttonCustom btn-danger mr-2" style="display: block;"><i class="icon-trash"></i>Hapus</button>
+                                    <button type="submit" class="btn buttonCustom daftar-surat-masuk btn-danger mr-2"><i class="icon-trash"></i></button>
                                 </div>
                             </form>
                         </td>

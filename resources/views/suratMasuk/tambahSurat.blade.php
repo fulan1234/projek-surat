@@ -13,7 +13,7 @@ Tambah Surat - Sipsu
           <p class="card-description"> Personal info </p>
           <div class="row">
             <div class="col-md-6">
-              <div class="form-group row">
+              <div class="form-group">
                 <label class="col-sm-3 col-form-label">No. Surat</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" name="no"/>

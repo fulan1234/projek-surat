@@ -47,3 +47,8 @@ Route::get('/disposisiSurat', 'App\Http\Controllers\home@disposisiSurat')->name(
 
 //DASHBOARD
 Route::get('/dashboard', 'App\Http\Controllers\home@dashboard')->name('dashboard');
+
+// LAPORAN DATA
+Route::get('/laporan_surat_masuk', 'App\Http\Controllers\home@lap_surat_masuk')->name('lapSuratMasuk');
+Route::get('/laporan_surat_keluar', 'App\Http\Controllers\home@lap_surat_keluar')->name('lapSuratKeluar');
+Route::get('/disposisi_surat_masuk', 'App\Http\Controllers\home@dis_surat_masuk')->name('disSuratMasuk');
