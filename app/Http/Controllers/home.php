@@ -67,5 +67,19 @@ class home extends Controller
         return view('dashboard', compact('suratmcount', 'suratkcount', 'suratm', 'suratk', 'dateDifferencesm', 'dateDifferencesk'));
     }
 
+    public function lap_surat_masuk()
+    {
+        return view('laporanSuratMasuk.lap_surat_masuk');
+    }
+
+    public function lap_surat_keluar()
+    {
+        return view('laporanSuratMasuk.lap_surat_masuk');
+    }
+
+    public function dis_surat_masuk()
+    {
+        return view('laporanSuratMasuk.lap_surat_masuk');
+    }
 
 }

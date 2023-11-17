@@ -22,11 +22,9 @@ Surat Masuk - Sipsu
                   <th>No</th>
                   <th>No. Surat</th>
                   <th>Tanggal Surat</th>
-                  <th>Perihal</th>
                   <th>Jenis Surat</th>
                   <th>Ditujukan</th>
                   <th>Deskripsi</th>
-                  <th>Pengirim</th>
                   <th>Berkas</th>
                   <th>Status</th>
                   <th>Action</th>
@@ -38,11 +36,9 @@ Surat Masuk - Sipsu
                         <td>{{$loop->iteration}}</td>
                         <td>{{$s->no}}</td>
                         <td>{{$s->tgl_surat}}</td>
-                        <td>{{$s->perihal}}</td>
                         <td>{{$s->jenis_surat->name}}</td>
                         <td>{{$s->ditujukan}}</td>
                         <td>{{$s->deskripsi}}</td>
-                        <td>{{$s->pengirim}}</td>
                         <td>
                             <a style="color: black;" href="{{ route('downloadsuratmasuk', $s->berkas) }}">{{$s->berkas}}</a>
                             {{-- <a style="color: black;" href="{{ route('downloadsuratmasuk', $s->berkas) }}">{{$s->berkas}}</a> --}}
@@ -58,10 +54,10 @@ Surat Masuk - Sipsu
                             <form action="{{route('hapussurat', $s->id)}}" method="POST" onsubmit="return confirm('Anda yakin menghapus ini?');">
                                 @csrf
                                 <div>
-                                    <a href="{{route('disposisi', $s->id)}}" class="btn buttonCustom daftar-surat-masuk btn-primary mb-2" style="display: block;"><i class="icon-plus"></i>Disposisi</a>
-                                    <a href="{{route('editsurat', $s->id)}}" class="btn buttonCustom daftar-surat-masuk btn-warning mr-2" style="display: block;"><i class="icon-trash"></i>Edit</a>
+                                    <a href="#popup-suratMasuk" class="btn buttonCustom daftar-surat-masuk btn-primary mr-2"><i class="icon-plus"></i></a>
+                                    <a href="{{route('editsurat', $s->id)}}" class="btn buttonCustom daftar-surat-masuk btn-warning mr-2"><i class=" icon-magic-wand"></i></a>
                                     @method('DELETE')
-                                    <button type="submit" class="btn buttonCustom btn-danger mr-2" style="display: block;"><i class="icon-trash"></i>Hapus</button>
+                                    <button type="submit" class="btn buttonCustom daftar-surat-masuk btn-danger mr-2"><i class="icon-trash"></i></button>
                                 </div>
                             </form>
                         </td>
@@ -92,15 +88,15 @@ Surat Masuk - Sipsu
             <table class="table table-hover content" id="surat-keluar" style="width:100%;">
                 <thead>
                   <tr>
-                    <th style="width: 20%;">No. Surat</th>
-                    <th style="width: 20%;">Tanggal Surat</th>
-                    <th style="width: 20%;">Perihal</th>
-                    <th style="width: 20%;">Pengirim</th>
-                    <th style="width: 20%;">Kepada</th>
-                    <th style="width: 20%;">Jenis Surat</th>
-                    <th style="width: 20%;">Sifat</th>
-                    <th style="width: 20%;">Petugas</th>
-                    <th style="width: 20%;">Waktu</th>
+                    <th>No. Surat</th>
+                    <th>Tanggal Surat</th>
+                    <th>Perihal</th>
+                    <th>Pengirim</th>
+                    <th>Kepada</th>
+                    <th>Jenis Surat</th>
+                    <th>Sifat</th>
+                    <th>Petugas</th>
+                    <th>Waktu</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -132,4 +128,124 @@ Surat Masuk - Sipsu
       </div>
     </div>
   </div>
+
+  <div class="popupCustom" id="popup-suratMasuk">
+    <div class="card popup-content grid-margin">
+      <div class="card-body" style="padding: 0px;">
+        <div class="popup-header">
+          <h4 class="card-title popup">Buat Disposisi Surat</h4>
+        </div>
+        <div class="popup-form">
+          <form action="#" method="POST" enctype="multipart/form-data" class="form-sample">
+            @csrf
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="" style="display: block;"><strong>No. Surat</strong></label>
+                  <div class="">
+                    <p>112</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class=""><strong>Pengirim</strong></label>
+                      <div class="">
+                        <p>Hivi</p>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class=""><strong>Perihal</strong></label>
+                      <div class="">
+                        <p>Surat Dinasti</p>
+                      </div>
+                    </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class=""><strong>Ditujukan</strong></label>
+                      <div class="">
+                        <p>Yang Mulia COCO</p>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class=""><strong>Tanggal Surat</strong></label>
+                      <div class="">
+                        <p>04/08/2007</p>
+                      </div>
+                    </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class=""><strong>File upload</strong></label>
+                      <div class="">
+                        <p>surat_tugas.pdf</p>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class=""><strong>Jenis Surat</strong></label>
+                      <div class="">
+                        <p>Perang</p>
+                      </div>
+                    </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class=""><strong>Status Disposisi</strong></label>
+                      <div class="">
+                        <p>Sudah Disposisi</p>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class=""><strong>Deskripsi</strong></label>
+                      <div class="">
+                          <p>Kita dr. tangguh</p>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <div class="button-popup">
+              <input type="submit" value="Save" class="btn buttonCustom btn-primary mr-2">
+              <a href="#" class="btn buttonCustom btn-danger mr-2">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      {{-- <div class="btn-container form">
+        <button type="submit" class="btn buttonCustom btn-primary mr-2"><i class="icon-trash"></i> Simpan</button>
+        <button type="submit" class="btn buttonCustom btn-danger mr-2"><i class="icon-trash"></i> Reset</button>
+    </div> --}}
+    </div>
+  </div>
+
+    {{-- <div class="popup-container active">
+      <h4>20% OFF Offer</h4>
+      <label for="email">Your Email</label>
+      <input
+        type="email"
+        name="email"
+        class="input"
+        placeholder="Enter Your Email"
+      />
+      <button class="popup-btn">Join</button>
+      <div class="close-icon">
+        <i class="fas fa-times fa-2x"></i>
+      </div>
+    </div> --}}
 @endsection
