@@ -8,7 +8,6 @@ Surat Masuk - Sipsu
     <a href="{{route('tambahSurat')}}">
         <button type="submit" class="btn buttonCustom btn-success mr-2"><i class="icon-plus"></i> Tambah</button>
     </a>
-    {{-- <button type="submit" class="btn buttonCustom btn-danger mr-2"><i class="icon-trash"></i> Hapus</button> --}}
 </div>
 <div class="col-lg-12 grid-margin stretch-card mt-3" style="padding:0px;">
     <div class="card">
@@ -41,20 +40,13 @@ Surat Masuk - Sipsu
                         <td>{{$s->deskripsi}}</td>
                         <td>
                             <a style="color: black;" href="{{ route('downloadsuratmasuk', $s->berkas) }}">{{$s->berkas}}</a>
-                            {{-- <a style="color: black;" href="{{ route('downloadsuratmasuk', $s->berkas) }}">{{$s->berkas}}</a> --}}
                         </td>
                         <td>{{$s->status}}</td>
-                        {{-- <td>
-                            <div class="buttonCustom surat">
-                                <button type="submit" class="btn buttonCustom daftar-surat-masuk btn-primary mb-2" style="display: block;"><i class="icon-plus"></i> Disposisi</button>
-                                <button type="submit" class="btn buttonCustom daftar-surat-masuk btn-warning mr-2"><i class="icon-trash"></i> Edit</button>
-                            </div>
-                        </td> --}}
                         <td>
                             <form action="{{route('hapussurat', $s->id)}}" method="POST" onsubmit="return confirm('Anda yakin menghapus ini?');">
                                 @csrf
                                 <div>
-                                    <a href="#popup-suratMasuk" class="btn buttonCustom daftar-surat-masuk btn-primary mr-2"><i class="icon-plus"></i></a>
+                                    <a href="#popup-suratMasuk" class="btn buttonCustom daftar-surat-masuk btn-primary mr-2" onclick="showPopup('popup-suratMasuk','{{$s->no}}', '{{$s->perihal}}', '{{$s->tgl_surat}}', '{{$s->jenis_surat->name}}', '{{$s->deskripsi}}', '{{$s->pengirim}}', '{{$s->ditujukan}}', '{{$s->berkas}}', '{{$s->status}}' )"><i class="icon-plus"></i></a>
                                     <a href="{{route('editsurat', $s->id)}}" class="btn buttonCustom daftar-surat-masuk btn-warning mr-2"><i class=" icon-magic-wand"></i></a>
                                     @method('DELETE')
                                     <button type="submit" class="btn buttonCustom daftar-surat-masuk btn-danger mr-2"><i class="icon-trash"></i></button>
@@ -62,25 +54,6 @@ Surat Masuk - Sipsu
                             </form>
                         </td>
                     </tr>
-                    {{-- <tr>
-                        <td>1</td>
-                        <td>212</td>
-                        <td>2018-02-14</td>
-                        <td>Ujikom</td>
-                        <td>Surat Dinas</td>
-                        <td>Sekolah</td>
-                        <td>Surat permintaan</td>
-                        <td>si Fulan</td>
-                        <td>1234565.pdf</td>
-                        <td><label class="badge badge-warning" style="padding: 3px 5px;">Penting</label></td>
-                        <td>Sudah Dioposisi</td>
-                        <td>
-                            <div class="buttonCustom surat">
-                                <button type="submit" class="btn buttonCustom daftar-surat-masuk btn-primary mb-2" style="display: block;"><i class="icon-plus"></i> Disposisi</button>
-                                <button type="submit" class="btn buttonCustom daftar-surat-masuk btn-warning mr-2"><i class="icon-trash"></i> Edit</button>
-                            </div>
-                        </td>
-                    </tr> --}}
                 @endforeach
               </tbody>
             </table>
@@ -143,7 +116,7 @@ Surat Masuk - Sipsu
                 <div class="form-group">
                   <label class="" style="display: block;"><strong>No. Surat</strong></label>
                   <div class="">
-                    <p>112</p>
+                    <p id="no"></p>
                   </div>
                 </div>
               </div>
@@ -151,7 +124,7 @@ Surat Masuk - Sipsu
                   <div class="form-group">
                       <label class=""><strong>Pengirim</strong></label>
                       <div class="">
-                        <p>Hivi</p>
+                        <p id="pengirim"></p>
                       </div>
                     </div>
               </div>
@@ -161,7 +134,7 @@ Surat Masuk - Sipsu
                   <div class="form-group">
                       <label class=""><strong>Perihal</strong></label>
                       <div class="">
-                        <p>Surat Dinasti</p>
+                        <p id="perihal"></p>
                       </div>
                     </div>
               </div>
@@ -169,7 +142,7 @@ Surat Masuk - Sipsu
                   <div class="form-group">
                       <label class=""><strong>Ditujukan</strong></label>
                       <div class="">
-                        <p>Yang Mulia COCO</p>
+                        <p id="ditujukan"></p>
                       </div>
                     </div>
               </div>
@@ -179,7 +152,7 @@ Surat Masuk - Sipsu
                   <div class="form-group">
                       <label class=""><strong>Tanggal Surat</strong></label>
                       <div class="">
-                        <p>04/08/2007</p>
+                        <p id="tanggal"></p>
                       </div>
                     </div>
               </div>
@@ -187,7 +160,7 @@ Surat Masuk - Sipsu
                   <div class="form-group">
                       <label class=""><strong>File upload</strong></label>
                       <div class="">
-                        <p>surat_tugas.pdf</p>
+                        <p id="berkas"></p>
                       </div>
                     </div>
               </div>
@@ -197,7 +170,7 @@ Surat Masuk - Sipsu
                   <div class="form-group">
                       <label class=""><strong>Jenis Surat</strong></label>
                       <div class="">
-                        <p>Perang</p>
+                        <p id="jenis"></p>
                       </div>
                     </div>
               </div>
@@ -205,7 +178,7 @@ Surat Masuk - Sipsu
                   <div class="form-group">
                       <label class=""><strong>Status Disposisi</strong></label>
                       <div class="">
-                        <p>Sudah Disposisi</p>
+                        <p id="status"></p>
                       </div>
                     </div>
               </div>
@@ -215,7 +188,7 @@ Surat Masuk - Sipsu
                   <div class="form-group">
                       <label class=""><strong>Deskripsi</strong></label>
                       <div class="">
-                          <p>Kita dr. tangguh</p>
+                          <p id="desc"></p>
                       </div>
                     </div>
               </div>
@@ -227,25 +200,25 @@ Surat Masuk - Sipsu
           </form>
         </div>
       </div>
-      {{-- <div class="btn-container form">
-        <button type="submit" class="btn buttonCustom btn-primary mr-2"><i class="icon-trash"></i> Simpan</button>
-        <button type="submit" class="btn buttonCustom btn-danger mr-2"><i class="icon-trash"></i> Reset</button>
-    </div> --}}
     </div>
   </div>
 
-    {{-- <div class="popup-container active">
-      <h4>20% OFF Offer</h4>
-      <label for="email">Your Email</label>
-      <input
-        type="email"
-        name="email"
-        class="input"
-        placeholder="Enter Your Email"
-      />
-      <button class="popup-btn">Join</button>
-      <div class="close-icon">
-        <i class="fas fa-times fa-2x"></i>
-      </div>
-    </div> --}}
+    <script>
+        function showPopup(popupId, no, perihal, tanggal, jenis, desc, pengirim, ditujukan, berkas, status) {
+            // Mendapatkan elemen popup
+            var popup = document.getElementById(popupId);
+
+            // Menetapkan nilai ke dalam elemen popup
+            document.getElementById('no').innerText = no;
+            document.getElementById('perihal').innerText = perihal;
+            document.getElementById('tanggal').innerText = tanggal;
+            document.getElementById('jenis').innerText = jenis;
+            document.getElementById('desc').innerText = desc;
+            document.getElementById('pengirim').innerText = pengirim;
+            document.getElementById('ditujukan').innerText = ditujukan;
+            document.getElementById('berkas').innerText = berkas;
+            document.getElementById('status').innerText = status;
+        }
+    </script>
+
 @endsection
