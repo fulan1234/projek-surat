@@ -57,46 +57,6 @@ Surat Masuk - Sipsu
                 @endforeach
               </tbody>
             </table>
-
-            <table class="table table-hover content" id="surat-keluar" style="width:100%;">
-                <thead>
-                  <tr>
-                    <th>No. Surat</th>
-                    <th>Tanggal Surat</th>
-                    <th>Perihal</th>
-                    <th>Pengirim</th>
-                    <th>Kepada</th>
-                    <th>Jenis Surat</th>
-                    <th>Sifat</th>
-                    <th>Petugas</th>
-                    <th>Waktu</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>311</td>
-                    <td>2023-05-14</td>
-                    <td>UN</td>
-                    <td>SDN 01 Pagi</td>
-                    <td>Siswa</td>
-                    <td>Surat Peringatan</td>
-                    <td><label class="badge badge-danger">Rahasia</label></td>
-                    <td>Si Anu</td>
-                    <td>1 Hari yang lalu</td>
-                  </tr>
-                  <tr>
-                    <td>2312</td>
-                    <td>2021-08-15</td>
-                    <td>Testing Web</td>
-                    <td>Plesbol</td>
-                    <td>ETI</td>
-                    <td>Negosiasi Akun</td>
-                    <td><label class="badge badge-warning">Penting</label></td>
-                    <td>Si Manusia</td>
-                    <td>3 Jam yang lalu</td>
-                  </tr>
-                </tbody>
-            </table>
             </div>
       </div>
     </div>
